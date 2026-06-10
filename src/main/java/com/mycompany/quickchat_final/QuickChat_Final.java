@@ -67,4 +67,16 @@ public class QuickChat_Final {
         String password = input.nextLine();
         return !username.isEmpty() && !password.isEmpty();
     }
+    //================Part 3===================================
+    private static void populateTestData(){
+        System.out.println("\nPopulating test data...");
+        
+        //Test data Message 1
+        Message msg1 = new Message();
+        msg1.setRecipient("+27834557896");
+        msg1.setMessage("Did you get the cake?");
+        msg1.setFlag("Sent");
+        msg1.addToArrays();
+        
+    }
 }
