@@ -15,14 +15,14 @@ public class QuickChat_Final {
         try (Scanner input = new Scanner (System.in)) {
             System.out.println("Welcome to QuickChat.");
             
-            // Part 1: Login
+            //================Part 1: Login ===============
             boolean isLoggedIn = login(input);
             if (!isLoggedIn){
                 System.out.println("Login failed. Exiting.");
                 input.close();
                 return;
             }
-            // part 3: Populate test data (no hard-coding in logic)
+            //================Part 3: Populate test data (no hard-coding in logic)=========
             populateTestData();
             
             boolean running = true;
@@ -47,7 +47,7 @@ public class QuickChat_Final {
             System.out.println("\nThank you for using QuickChat. Goodbye!");
         }
     }
-    //================Part 1===================================
+    //================Part 1: Login===================================
     private static boolean login(Scanner input){
         System.out.println("\n=== Login to QuickChat ===");
         System.out.println("Enter your username:");
@@ -56,7 +56,7 @@ public class QuickChat_Final {
         String password = input.nextLine();
         return !username.isEmpty() && !password.isEmpty();
     }
-    //================Part 3===================================
+    //================Part 3:  Test Data===================================
     private static void populateTestData(){
         System.out.println("\nPopulating test data...");
         
@@ -98,7 +98,7 @@ public class QuickChat_Final {
         System.out.println("Test data populated successfully.");
     }
     
-    //================Part 2=====================================
+    //================Part 2: Send Message=====================================
     private static void sendMessageFlow(Scanner input){
         System.out.println("How many messages would you like to send?");
         int numMessages = getValidIntInput(input);
@@ -233,3 +233,11 @@ public class QuickChat_Final {
         }
     }
 }
+
+// REFERENCING LIST:
+//Baeldung (2025) Java Switch Statement. Available at: https://www.baeldung.com/java-switch (Accessed: 10 June 2026).
+//GeeksforGeeks (2025) Arrays in Java. Available at: https://www.geeksforgeeks.org/arrays-in-java/ (Accessed: 9 June 2026).
+//Independent Institute of Education (2026) PROG5121POE: Programming 5121 Portfolio of Evidence. Johannesburg: The Independent Institute of Education (Pty) Ltd.
+//JUnit Team (2025) JUnit 5 User Guide. Available at: https://junit.org/junit5/docs/current/user-guide/ (Accessed: 11 June 2026).
+//Oracle (2025) Java Platform, Standard Edition 17 Documentation. Available at: https://docs.oracle.com/en/java/javase/17/ (Accessed: 11 June 2026).
+//Oracle (2025) The switch Statement - Java Language Specification. Available at: https://docs.oracle.com/javase/specs/jls/se17/html/jls-14.html#jls-14.11 (Accessed: 11 June 2026).
