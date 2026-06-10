@@ -181,5 +181,78 @@ public class QuickChat_Final {
             }
         }
     }
-    
+    private static void displaySenderRecipient() {
+        for (Message m : Message.getStoredMessages()) {
+            System.out.println("Sender: Developer | Recipient: " + m.getRecipient());
+        }
+    }
+
+    private static void displayLongestMessage() {
+        Message longest = Message.getStoredMessages().stream()
+                .max((a, b) -> Integer.compare(
+                        a.getMessageText() != null ? a.getMessageText().length() : 0,
+                        b.getMessageText() != null ? b.getMessageText().length() : 0))
+                .orElse(null);
+
+        if (longest != null) {
+            System.out.println("Longest stored message: " + longest.getMessageText());
+        } else {
+            System.out.println("No stored messages found.");
+        }
+    }
+
+    private static void searchByMessageID(Scanner input) {
+        System.out.print("Enter Message ID: ");
+        String id = input.nextLine().trim();
+        for (Message m : Message.getStoredMessages()) {
+            if (m.getMessageID().equals(id)) {
+                System.out.println("Recipient: " + m.getRecipient());
+                System.out.println("Message: " + m.getMessageText());
+                return;
+            }
+        }
+        System.out.println("Message not found.");
+    }
+
+    private static void searchByRecipient(Scanner input) {
+        System.out.print("Enter recipient: ");
+        String rec = input.nextLine().trim();
+        boolean found = false;
+        for (Message m : Message.getStoredMessages()) {
+            if (rec.equals(m.getRecipient())) {
+                System.out.println(m.getMessageText());
+                found = true;
+            }
+        }
+        if (!found) System.out.println("No messages found for this recipient.");
+    }
+
+    private static void deleteByHash(Scanner input) {
+        System.out.print("Enter Message Hash: ");
+        String hash = input.nextLine().trim();
+        boolean removed = Message.getStoredMessages().removeIf(m -> hash.equals(m.getMessageHash()));
+        System.out.println(removed ? "Message successfully deleted." : "No message found with that hash.");
+    }
+
+    private static void displayFullReport() {
+        System.out.println("\n=== Full Stored Messages Report ===");
+        for (Message m : Message.getStoredMessages()) {
+            System.out.println("Message Hash : " + m.getMessageHash());
+            System.out.println("Recipient    : " + m.getRecipient());
+            System.out.println("Message      : " + m.getMessageText());
+            System.out.println("---");
+        }
+    }
+
+    // Helper method to safely read integers
+    private static int getValidIntInput(Scanner input) {
+        while (true) {
+            try {
+                return input.nextInt();
+            } catch (Exception e) {
+                input.nextLine();
+                System.out.print("Invalid input. Please enter a number: ");
+            }
+        }
+    }
 }
