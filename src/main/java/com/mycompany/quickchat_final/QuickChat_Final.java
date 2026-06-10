@@ -4,8 +4,6 @@
 
 package com.mycompany.quickchat_final;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 /**
  * Combines Registration_And_Login, Sending Messages and stored messages functionality.
@@ -14,49 +12,40 @@ import java.util.Scanner;
 public class QuickChat_Final {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner (System.in);
-        System.out.println("Welcome to QuickChat.");
-        
-        // Part 1: Login
-        boolean isLoggedIn = login(input);
-        if (!isLoggedIn){
-            System.out.println("Login failed. Exiting.");
-            input.close();
-            return;
-        }
-        // part 3: Populate test data (no hard-coding in logic)
-        populateTestData();
-        
-        boolean running = true;
-        while (running){
-            System.out.println("\n====QuickChat Main Menu====");
-            System.out.println("1. Send Messages");
-            System.out.println("2. Show recently sent messages");
-            System.out.println("3. Quit");
-            System.out.println("4. Stored Messages");
-            System.out.println("Enter your choice:");
+        try (Scanner input = new Scanner (System.in)) {
+            System.out.println("Welcome to QuickChat.");
             
-            int action = getValidIntInput(input);
-            
-            switch(action){
-                case 1:
-                    sendMessageFlow(input);
-                    break;
-                case 2:
-                    showRecentlySentMessages();
-                    break;
-                case 3:
-                    running = false;
-                    break;
-                case 4:
-                    storedMessagesMenu(input);
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+            // Part 1: Login
+            boolean isLoggedIn = login(input);
+            if (!isLoggedIn){
+                System.out.println("Login failed. Exiting.");
+                input.close();
+                return;
             }
+            // part 3: Populate test data (no hard-coding in logic)
+            populateTestData();
+            
+            boolean running = true;
+            while (running){
+                System.out.println("\n====QuickChat Main Menu====");
+                System.out.println("1. Send Messages");
+                System.out.println("2. Show recently sent messages");
+                System.out.println("3. Quit");
+                System.out.println("4. Stored Messages");
+                System.out.println("Enter your choice:");
+                
+                int action = getValidIntInput(input);
+                
+                switch(action){
+                    case 1 -> sendMessageFlow(input);
+                    case 2 -> showRecentlySentMessages();
+                    case 3 -> running = false;
+                    case 4 -> storedMessagesMenu(input);
+                    default -> System.out.println("Invalid option. Please try again.");
+                }
+            }
+            System.out.println("\nThank you for using QuickChat. Goodbye!");
         }
-        System.out.println("\nThank you for using QuickChat. Goodbye!");
-        input.close();
     }
     //================Part 1===================================
     private static boolean login(Scanner input){
@@ -156,28 +145,16 @@ public class QuickChat_Final {
             String choice = input.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "a": 
-                    displaySenderRecipient(); 
-                    break;
-                case "b": 
-                    displayLongestMessage(); 
-                    break;
-                case "c": 
-                    searchByMessageID(input);
-                    break;
-                case "d": 
-                    searchByRecipient(input); 
-                    break;
-                case "e": 
-                    deleteByHash(input); 
-                    break;
-                case "f": 
-                    displayFullReport();
-                    break;
-                case "0":
+                case "a" -> displaySenderRecipient();
+                case "b" -> displayLongestMessage();
+                case "c" -> searchByMessageID(input);
+                case "d" -> searchByRecipient(input);
+                case "e" -> deleteByHash(input);
+                case "f" -> displayFullReport();
+                case "0" -> {
                     return;
-                default: 
-                    System.out.println("Invalid choice. Please try again.");
+                }
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
