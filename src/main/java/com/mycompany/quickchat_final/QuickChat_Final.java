@@ -35,6 +35,36 @@ public class QuickChat_Final {
             System.out.println("3. Quit");
             System.out.println("4. Stored Messages");
             System.out.println("Enter your choice:");
+            
+            int action = getValidIntInput(input);
+            
+            switch(action){
+                case 1:
+                    sendMessageFlow(input);
+                    break;
+                case 2:
+                    showRecentlySentMessages();
+                    break;
+                case 3:
+                    running = false;
+                    break;
+                case 4:
+                    storedMessagesMenu(input);
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
+        System.out.println("\nThank you for using QuickChat. Goodbye!");
+        input.close();
+    }
+    //================Part 1===================================
+    private static boolean login(Scanner input){
+        System.out.println("\n=== Login to QuickChat ===");
+        System.out.println("Enter your username:");
+        String username = input.nextLine();
+        System.out.println("Enter your password:");
+        String password = input.nextLine();
+        return !username.isEmpty() && !password.isEmpty();
     }
 }
