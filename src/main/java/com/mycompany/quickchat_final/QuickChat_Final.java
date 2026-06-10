@@ -78,5 +78,11 @@ public class QuickChat_Final {
         msg1.setFlag("Sent");
         msg1.addToArrays();
         
+        //Test data Message 2
+        Message msg2 = new Message();
+        msg2.setRecipient("+27838884567");
+        msg2.setMessage("Where are you? You are late! I have asked you to be on time.");
+        msg2.setFlag("Stored");
+        msg2.addToArrays();
     }
 }
