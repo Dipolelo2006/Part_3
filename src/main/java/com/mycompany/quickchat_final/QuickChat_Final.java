@@ -84,5 +84,28 @@ public class QuickChat_Final {
         msg2.setMessage("Where are you? You are late! I have asked you to be on time.");
         msg2.setFlag("Stored");
         msg2.addToArrays();
+        
+        //Test Data Message 3
+        Message msg3 = new Message();
+        msg3.setRecipient("+27834484567");
+        msg3.setMessage("Yohoooo, I am at your gate.");
+        msg3.setFlag("Disregarded");
+        msg3.addToArrays();
+        
+        //Test Data Message 4
+        Message msg4 = new Message();
+        msg4.setRecipient("0838884567");
+        msg4.setMessage("It is dinner time!");
+        msg4.setFlag("Sent");
+        msg4.addToArrays();
+        
+        //Test Data Message 5
+        Message msg5 = new Message();
+        msg5.setRecipient("+27838884567");
+        msg5.setMessage("Ok, I'm leaving without you.");
+        msg5.setFlag("Stored");
+        msg5.addToArrays();
+        
+        System.out.println("Test data populated successfully.");
     }
 }
