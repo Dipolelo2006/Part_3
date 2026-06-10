@@ -133,4 +133,12 @@ public class QuickChat_Final {
             }
         }
     }
+    private static void showRecentlySentMessages(){
+        System.out.println("\n=== Recently Sent Messages ===");
+        for (Message m : Message.getSentMessages()){
+            m.printMessageDetails();
+            System.out.println("---");
+        }
+    }
+    
 }
