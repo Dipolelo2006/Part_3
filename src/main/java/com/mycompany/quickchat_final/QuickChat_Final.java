@@ -140,5 +140,46 @@ public class QuickChat_Final {
             System.out.println("---");
         }
     }
+    //================Part 3: Stored Messages Menu===================
+    private static void storedMessagesMenu(Scanner input){
+        while(true){
+            System.out.println("\n=== Stored Messages Menu ===");
+            System.out.println("a. Display sender and recipient of all stored messages");
+            System.out.println("b. Display the longest stored message");
+            System.out.println("c. Search for a message ID and display the corresponding recipient and message");
+            System.out.println("d. Search for all the messages stored for a particular recipient");
+            System.out.println("e. Delete a message using the message hash");
+            System.out.println("f. Display a report that lists the full details of all the stored messages");
+            System.out.println("0. Back to main menu");
+            System.out.print("Choice: ");
+
+            String choice = input.nextLine().trim().toLowerCase();
+
+            switch (choice) {
+                case "a": 
+                    displaySenderRecipient(); 
+                    break;
+                case "b": 
+                    displayLongestMessage(); 
+                    break;
+                case "c": 
+                    searchByMessageID(input);
+                    break;
+                case "d": 
+                    searchByRecipient(input); 
+                    break;
+                case "e": 
+                    deleteByHash(input); 
+                    break;
+                case "f": 
+                    displayFullReport();
+                    break;
+                case "0":
+                    return;
+                default: 
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
     
 }
