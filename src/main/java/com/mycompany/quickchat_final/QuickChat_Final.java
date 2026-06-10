@@ -108,4 +108,29 @@ public class QuickChat_Final {
         
         System.out.println("Test data populated successfully.");
     }
+    
+    //================Part 2=====================================
+    private static void sendMessageFlow(Scanner input){
+        System.out.println("How many messages would you like to send?");
+        int numMessages = getValidIntInput(input);
+        input.nextLine(); // consume newline
+        
+        for (int i = 1; i <= numMessages; i++){
+            System.out.println("\n=== Processing Message" + i + "===");
+            Message msg = new Message();
+            
+            System.out.println("Enter recipient cell number:");
+            msg.setRecipient(input.nextLine());
+            
+            System.out.println("Enter your Message (Max 250 characters):");
+            msg.setMessage(input.nextLine());
+            
+            String result = msg.sendMessage();
+            System.out.println(result);
+            
+            if (result.contains("Successfully")){
+                msg.printMessageDetails();
+            }
+        }
+    }
 }
