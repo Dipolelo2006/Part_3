@@ -83,7 +83,7 @@ public class QuickChat_Final {
         
         //Test Data Message 4
         Message msg4 = new Message();
-        msg4.setRecipient("0838884567");
+        msg4.setRecipient("+27838884567");
         msg4.setMessage("It is dinner time!");
         msg4.setFlag("Sent");
         msg4.addToArrays();
